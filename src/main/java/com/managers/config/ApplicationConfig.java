@@ -1,9 +1,9 @@
 package com.managers.config;
 
-import com.managers.services.BlogService;
 import com.managers.services.CategoryService;
-import com.managers.services.impl.BlogServiceImpl;
+import com.managers.services.ProductService;
 import com.managers.services.impl.CategoryServiceImpl;
+import com.managers.services.impl.ProductServiceImpl;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -49,8 +49,8 @@ public class ApplicationConfig  extends WebMvcConfigurerAdapter implements Appli
     }
 
     @Bean
-    public BlogService blogService(){
-        return new BlogServiceImpl();
+    public ProductService productService(){
+        return new ProductServiceImpl();
     }
 
     @Bean
@@ -107,7 +107,7 @@ public class ApplicationConfig  extends WebMvcConfigurerAdapter implements Appli
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/blogdb?useUnicode=true&characterEncoding=UTF-8");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/final_test?useUnicode=true&characterEncoding=UTF-8");
         dataSource.setUsername("root");
         dataSource.setPassword("123456");
         return dataSource;

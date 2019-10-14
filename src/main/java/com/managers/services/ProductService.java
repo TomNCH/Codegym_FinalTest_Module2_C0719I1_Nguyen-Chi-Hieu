@@ -1,15 +1,17 @@
 package com.managers.services;
 
 import com.managers.models.Product;
+import org.springframework.data.domain.Pageable;
+
 
 public interface ProductService {
-    Iterable<Product> findAll();
+    Iterable<Product> findAll(Pageable pageable);
 
     Product findById(Long id);
 
-    Product save(Product customer);
+    Product save(Product product);
 
     void remove(Long id);
 
-    void removeAll();
+    Iterable<Product> findAllByName(String name);
 }
