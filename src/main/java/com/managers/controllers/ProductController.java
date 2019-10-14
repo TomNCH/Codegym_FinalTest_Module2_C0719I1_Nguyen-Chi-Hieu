@@ -26,21 +26,21 @@ public class ProductController {
     }
 
     @GetMapping("/")
-    public ModelAndView productList(Pageable pageable){
-        Iterable<Product> products = productService.findAll(pageable);
+    public ModelAndView productList(){
+        Iterable<Product> products = productService.findAll();
         ModelAndView modelAndView = new ModelAndView("/product/list");
         modelAndView.addObject("products", products);
         return modelAndView;
     }
 
     @RequestMapping("/list-product")
-    public ModelAndView getAllProduct(@RequestParam("s") Optional<String> s, Pageable pageable) {
+    public ModelAndView getAllProduct(@RequestParam("s") Optional<String> s) {
 
         Iterable<Product> productsList;
         if(s.isPresent()){
             productsList = productService.findAllByName(s.get());
         } else {
-            productsList = productService.findAll(pageable);
+            productsList = productService.findAll();
         }
         ModelAndView modelAndView = new ModelAndView("/product/list");
         modelAndView.addObject("products",productsList);
@@ -79,9 +79,10 @@ public class ProductController {
 
     @PostMapping("/update-product")
     public ModelAndView updateProduct(@ModelAttribute Product product) {
-        productService.save(product);
         ModelAndView modelAndView = new ModelAndView("/product/edit");
-        modelAndView.addObject("student", product);
+        modelAndView.addObject("product", product);
+        productService.save(product);
+
         modelAndView.addObject("message", "Edit product successfully");
         return modelAndView;
     }

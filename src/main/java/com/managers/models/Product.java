@@ -23,12 +23,11 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String type, Double price, Long quantity, String dateCreate, String description) {
+    public Product(String name, String type, Double price, Long quantity, String description) {
         this.name = name;
         this.type = type;
         this.price = price;
         this.quantity = quantity;
-        this.dateCreate = dateCreate;
         this.description = description;
     }
 

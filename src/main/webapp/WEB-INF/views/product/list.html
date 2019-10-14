@@ -20,11 +20,11 @@
                 <td>Type</td>
                 <td></td>
             </tr>
-            <div th:each="product : ${products}">
+            <div th:each="product, iStat : ${products}">
                 <tr>
-                    <td th:text="${product.id}"></td>
+                    <td th:text="${iStat.count}"></td>
                     <td th:text="${product.name}"></td>
-                    <td th:text="${product.type}"></td>
+                    <td th:text="${product.category.name}"></td>
                     <td><a th:href="@{/edit-product/__${product.id}__}">Edit</a>/<a th:href="@{/delete-product/__${product.id}__}">Delete</a></td>
                 </tr>
             </div>

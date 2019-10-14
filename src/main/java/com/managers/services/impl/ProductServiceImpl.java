@@ -12,7 +12,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
 
     @Override
-    public Iterable<Product> findAll(Pageable pageable) {
+    public Iterable<Product> findAll() {
         return productRepository.findAll();
     }
 
